@@ -1,6 +1,7 @@
 package com.journaldev.dagger2retrofitrecyclerview.di.module;
 
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.journaldev.dagger2retrofitrecyclerview.di.scopes.ApplicationScope;
 import com.journaldev.dagger2retrofitrecyclerview.retrofit.APIInterface;
 
@@ -27,6 +28,7 @@ public class RetrofitModule {
             retrofit = new Retrofit.Builder()
                     .baseUrl("https://randomuser.me")
                     .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(okHttpClient)
                     .build();
         }

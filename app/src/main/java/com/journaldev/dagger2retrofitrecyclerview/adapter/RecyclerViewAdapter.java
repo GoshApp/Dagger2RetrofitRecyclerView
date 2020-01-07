@@ -76,6 +76,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public void setData(List<Result> data) {
+        this.data.clear();
         this.data.addAll(data);
         notifyDataSetChanged();
     }

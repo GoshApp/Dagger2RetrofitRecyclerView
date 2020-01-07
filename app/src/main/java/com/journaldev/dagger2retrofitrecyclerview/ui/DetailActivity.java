@@ -12,16 +12,11 @@ import com.journaldev.dagger2retrofitrecyclerview.di.component.ApplicationCompon
 import com.journaldev.dagger2retrofitrecyclerview.di.component.DaggerDetailActivityComponent;
 import com.journaldev.dagger2retrofitrecyclerview.di.component.DetailActivityComponent;
 import com.journaldev.dagger2retrofitrecyclerview.di.qualifier.ApplicationContext;
-import com.journaldev.dagger2retrofitrecyclerview.pojo.RandomUser;
 import com.journaldev.dagger2retrofitrecyclerview.retrofit.APIInterface;
-import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -63,24 +58,24 @@ public class DetailActivity extends AppCompatActivity {
         detailActivityComponent.inject(this);
 
 
-        apiInterface.getUser().enqueue(new Callback<RandomUser>() {
-            @Override
-            public void onResponse(Call<RandomUser> call, Response<RandomUser> response) {
-                txtCellPhone.setText(response.body().getResults().get(0).getPhone());
-                txtEmail.setText(response.body().getResults().get(0).getEmail());
-                txtCity.setText(response.body().getResults().get(0).getLocation().getCity());
-                txtFullName.setText(response.body().getResults().get(0).getName().getFirst() + " " + response.body().getResults().get(0).getName().getLast());
-                txtYearsOld.setText(response.body().getResults().get(0).getDob().getAge().toString());
-
-                Picasso.with(getApplicationContext()).load(response.body().getResults().get(0).getPicture().getLarge())
-                        .into(profileImage);
-            }
-
-            @Override
-            public void onFailure(Call<RandomUser> call, Throwable t) {
-
-            }
-        });
+//        apiInterface.getUser().enqueue(new Callback<RandomUser>() {
+//            @Override
+//            public void onResponse(Call<RandomUser> call, Response<RandomUser> response) {
+//                txtCellPhone.setText(response.body().getResults().get(0).getPhone());
+//                txtEmail.setText(response.body().getResults().get(0).getEmail());
+//                txtCity.setText(response.body().getResults().get(0).getLocation().getCity());
+//                txtFullName.setText(response.body().getResults().get(0).getName().getFirst() + " " + response.body().getResults().get(0).getName().getLast());
+//                txtYearsOld.setText(response.body().getResults().get(0).getDob().getAge().toString());
+//
+//                Picasso.with(getApplicationContext()).load(response.body().getResults().get(0).getPicture().getLarge())
+//                        .into(profileImage);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<RandomUser> call, Throwable t) {
+//
+//            }
+//        });
 
     }
 }
